@@ -1,5 +1,8 @@
 {
   "values": [
-    "unife:fe_converter"
+    "unife:copper_fe_converter",
+    "unife:iron_fe_converter",
+    "unife:gold_fe_converter",
+    "unife:creative_fe_converter"
   ]
 }
