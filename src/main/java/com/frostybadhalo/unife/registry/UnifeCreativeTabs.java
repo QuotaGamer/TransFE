@@ -20,5 +20,6 @@ public class UnifeCreativeTabs {
                 output.accept(UnifeItems.IRON_FE_CONVERTER);
                 output.accept(UnifeItems.GOLD_FE_CONVERTER);
                 output.accept(UnifeItems.COPPER_FE_CONVERTER);
+                output.accept(UnifeItems.CREATIVE_FE_CONVERTER);
             }).build());
 }
