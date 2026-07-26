@@ -10,7 +10,7 @@
     "L": { "item": "powergrid:device_connector" },
     "N": { "item": "powergrid:battery" },
     "B": { "item": "powergrid:copper_coil" },
-    "W": { "item": "powergrid:gold_wire" },
+    "W": { "item": "powergrid:golden_wire" },
     "O": { "item": "create:electron_tube" },
     "C": { "item": "create:brass_casing" }
   },
