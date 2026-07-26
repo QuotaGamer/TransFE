@@ -18,14 +18,15 @@ import net.minecraft.world.level.LevelReader;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.patryk3211.powergrid.electricity.base.DirectionalElectricBlock;
 import org.patryk3211.powergrid.electricity.base.IDecoratedTerminal;
 import org.patryk3211.powergrid.electricity.base.TerminalBoundingBox;
 import org.patryk3211.powergrid.electricity.base.terminals.BlockStateTerminalCollection;
 import org.patryk3211.powergrid.electricity.deviceconnector.DeviceConnectorBlock;
 
-public class FEConverterBlock extends DirectionalElectricBlock
-        implements IBE<FEConverterBlockEntity>, IWrenchable {
+public class CopperFEConverterBlock extends DirectionalElectricBlock
+        implements IBE<CopperFEConverterBlockEntity>, IWrenchable {
 
     private static final TerminalBoundingBox[] TERMINALS = {
             new TerminalBoundingBox(IDecoratedTerminal.POSITIVE, 13.25, 14, 1.25, 14.75, 16.75, 2.75)
@@ -39,7 +40,8 @@ public class FEConverterBlock extends DirectionalElectricBlock
     };
 
     // going to be adjusted....
-    public FEConverterBlock(Properties settings) {
+    // when? Because it seems like I got here first
+    public CopperFEConverterBlock(Properties settings) {
         super(settings);
         setTerminalCollection(
                 BlockStateTerminalCollection.builder(this)
@@ -67,13 +69,13 @@ public class FEConverterBlock extends DirectionalElectricBlock
 
 
     @Override
-    public InteractionResult onWrenched(BlockState state, UseOnContext context) {
+    public @NotNull InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
 
         if (!level.isClientSide) {
             Direction current = state.getValue(FACING);
-            Direction next = current.getClockWise(); // rotação horizontal
+            Direction next = current.getClockWise(); // rotação horizontal // English, please... I think you said rotation horizontal but I'm not 100% sure
             level.setBlock(pos, state.setValue(FACING, next), 3);
             IWrenchable.playRotateSound(level, pos);
         }
@@ -125,12 +127,12 @@ public class FEConverterBlock extends DirectionalElectricBlock
     }
 
     @Override
-    public Class<FEConverterBlockEntity> getBlockEntityClass() {
-        return FEConverterBlockEntity.class;
+    public Class<CopperFEConverterBlockEntity> getBlockEntityClass() {
+        return CopperFEConverterBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends FEConverterBlockEntity> getBlockEntityType() {
-        return UnifeBlockEntities.FE_CONVERTER.get();
+    public BlockEntityType<? extends CopperFEConverterBlockEntity> getBlockEntityType() {
+        return UnifeBlockEntities.COPPER_FE_CONVERTER.get();
     }
 }

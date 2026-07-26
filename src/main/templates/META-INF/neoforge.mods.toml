@@ -11,9 +11,9 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 logoFile="icon.png"
-authors="FrostyBadHalo"
+authors="FrostyBadHalo and Quota (@QuotaGamer on GitHub)"
 description='''
-UniFE bridges Forge Energy sources with Create: Power Grid electrical networks.
+UniFE bridges Forge Energy sources with Create: Power Grid's electrical networks.
 '''
 
 [[mixins]]
@@ -41,22 +41,29 @@ config="${mod_id}.mixins.json"
 #openGLVersion="[3.2,)"
 
 [[dependencies.${mod_id}]]
-modId="create"
-type="required"
-versionRange="[6.0.9,6.1.0)"
-ordering="NONE"
-side="BOTH"
+modId = "create"
+type = "required"
+versionRange = "[6.0.9,6.1.0)"
+ordering = "NONE"
+side = "BOTH"
 
-[[dependencies.unife]]
+[[dependencies.${mod_id}]]
 modId = "powergrid"
 type = "required"
 versionRange = "[0.5.4,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.unife]]
+[[dependencies.${mod_id}]]
 modId = "immersiveengineering"
 type = "optional"
 versionRange = "[1.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "tfmg"
+type = "required"
+versionRange = "[1.2.0,)"
 ordering = "NONE"
 side = "BOTH"
