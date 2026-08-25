@@ -3,7 +3,7 @@ modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
 
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+issueTrackerURL="https://github.com/QuotaGamer/UniFE/issues"
 
 
 [[mods]] #mandatory
@@ -19,14 +19,10 @@ UniFE bridges Forge Energy sources with Create: Power Grid's electrical networks
 [[mixins]]
 config="${mod_id}.mixins.json"
 
-#[[accessTransformers]]
-#file="META-INF/accesstransformer.cfg"
-
-
-[[dependencies.${mod_id}]] #optional
-    modId="neoforge" #mandatory
-    type="required" #mandatory
-    versionRange="[${neo_version},)" #mandatory
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
     ordering="NONE"
     side="BOTH"
 
@@ -36,9 +32,6 @@ config="${mod_id}.mixins.json"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
-
-#[features.${mod_id}]
-#openGLVersion="[3.2,)"
 
 [[dependencies.${mod_id}]]
 modId = "create"
