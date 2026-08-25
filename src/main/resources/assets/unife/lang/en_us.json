@@ -3,5 +3,6 @@
   "block.unife.gold_fe_converter": "Gold FE Converter (MV)",
   "block.unife.copper_fe_converter": "Copper FE Converter (LV)",
   "block.unife.creative_fe_converter": "Creative FE Converter",
+  "block.unife.tfmg_fe_converter": "TFMG to FE Converter",
   "itemGroup.feConverters": "Energy Unit Converters"
 }

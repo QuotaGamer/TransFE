@@ -103,4 +103,7 @@ public class BaseFEConverterBlockEntity extends ElectricBlockEntity implements I
         super.read(nbt, clientPacket);
         feBuffer = nbt.getLong("FEBuffer");
     } */
+    // I too thought that was needed until I actually made an IEnergyStorage, I feel your pain here.
+    // Also, these are kinda useless now... I didn't know until today, but Power Grid has the FE Inverter which does what these do
+    // To be fair to you, though, they *are* a new feature, they haven't really been here for long... like, probably less than a month.
 }

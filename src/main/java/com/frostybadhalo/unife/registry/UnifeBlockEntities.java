@@ -4,6 +4,7 @@ import com.frostybadhalo.unife.blocks.feconverter.CreativeFEConverterBlockEntity
 import com.frostybadhalo.unife.blocks.feconverter.IronFEConverterBlockEntity;
 import com.frostybadhalo.unife.blocks.feconverter.GoldFEConverterBlockEntity;
 import com.frostybadhalo.unife.blocks.feconverter.CopperFEConverterBlockEntity;
+import com.frostybadhalo.unife.blocks.tfmgconverter.TFMGToFEConverterBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -38,6 +39,13 @@ public class UnifeBlockEntities {
             BLOCK_ENTITIES.register("creative_fe_converter", () ->
                     BlockEntityType.Builder
                             .of(CreativeFEConverterBlockEntity::new, UnifeBlocks.CREATIVE_FE_CONVERTER.get())
+                            .build(null)
+            );
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TFMGToFEConverterBlockEntity>> TFMG_FE_CONVERTER =
+            BLOCK_ENTITIES.register("tfmg_fe_converter", () ->
+                    BlockEntityType.Builder
+                            .of(TFMGToFEConverterBlockEntity::new, UnifeBlocks.TFMG_FE_CONVERTER.get())
                             .build(null)
             );
 }

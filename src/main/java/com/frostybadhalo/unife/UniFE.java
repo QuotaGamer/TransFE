@@ -45,5 +45,6 @@ public class UniFE {
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.GOLD_FE_CONVERTER.get(), (be, c) -> be);
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.COPPER_FE_CONVERTER.get(), (be, c) -> be);
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.CREATIVE_FE_CONVERTER.get(), (be, c) -> be);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
     }
 }

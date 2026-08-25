@@ -19,4 +19,7 @@ public class UnifeItems {
 
     public static final DeferredItem<BlockItem> CREATIVE_FE_CONVERTER =
             ITEMS.registerSimpleBlockItem("creative_fe_converter", UnifeBlocks.CREATIVE_FE_CONVERTER);
+
+    public static final DeferredItem<BlockItem> TFMG_FE_CONVERTER =
+            ITEMS.registerSimpleBlockItem("tfmg_fe_converter", UnifeBlocks.TFMG_FE_CONVERTER);
 }
