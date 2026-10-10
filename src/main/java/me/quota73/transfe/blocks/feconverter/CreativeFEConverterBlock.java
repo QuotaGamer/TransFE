@@ -1,6 +1,6 @@
 package me.quota73.transfe.blocks.feconverter;
 
-import me.quota73.transfe.registry.UnifeBlockEntities;
+import me.quota73.transfe.registry.TransFEBlockEntities;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
@@ -133,6 +133,6 @@ public class CreativeFEConverterBlock extends DirectionalElectricBlock
 
     @Override
     public BlockEntityType<? extends CreativeFEConverterBlockEntity> getBlockEntityType() {
-        return UnifeBlockEntities.CREATIVE_FE_CONVERTER.get();
+        return TransFEBlockEntities.CREATIVE_FE_CONVERTER.get();
     }
 }

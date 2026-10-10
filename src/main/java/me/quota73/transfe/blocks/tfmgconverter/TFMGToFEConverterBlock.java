@@ -1,7 +1,7 @@
 package me.quota73.transfe.blocks.tfmgconverter;
 
 import com.drmangotea.tfmg.base.blocks.TFMGDirectionalBlock;
-import me.quota73.transfe.registry.UnifeBlockEntities;
+import me.quota73.transfe.registry.TransFEBlockEntities;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
@@ -95,6 +95,6 @@ public class TFMGToFEConverterBlock extends TFMGDirectionalBlock
 
     @Override
     public BlockEntityType<? extends TFMGToFEConverterBlockEntity> getBlockEntityType() {
-        return UnifeBlockEntities.TFMG_FE_CONVERTER.get();
+        return TransFEBlockEntities.TFMG_FE_CONVERTER.get();
     }
 }

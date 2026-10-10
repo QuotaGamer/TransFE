@@ -8,19 +8,19 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class UnifeCreativeTabs {
+public class TransFECreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TransFE.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CONVERTER_TAB = CREATIVE_MODE_TABS.register("converters", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.feConverters"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> UnifeItems.IRON_FE_CONVERTER.get().getDefaultInstance())
+            .icon(() -> TransFEItems.IRON_FE_CONVERTER.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(UnifeItems.IRON_FE_CONVERTER);
-                output.accept(UnifeItems.GOLD_FE_CONVERTER);
-                output.accept(UnifeItems.COPPER_FE_CONVERTER);
-                output.accept(UnifeItems.CREATIVE_FE_CONVERTER);
-                output.accept(UnifeItems.TFMG_FE_CONVERTER);
+                output.accept(TransFEItems.IRON_FE_CONVERTER);
+                output.accept(TransFEItems.GOLD_FE_CONVERTER);
+                output.accept(TransFEItems.COPPER_FE_CONVERTER);
+                output.accept(TransFEItems.CREATIVE_FE_CONVERTER);
+                output.accept(TransFEItems.TFMG_FE_CONVERTER);
             }).build());
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class UnifeBlocks {
+public class TransFEBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks("transfe");
 

@@ -1,9 +1,9 @@
 package me.quota73.transfe;
 
-import me.quota73.transfe.registry.UnifeBlockEntities;
-import me.quota73.transfe.registry.UnifeBlocks;
-import me.quota73.transfe.registry.UnifeCreativeTabs;
-import me.quota73.transfe.registry.UnifeItems;
+import me.quota73.transfe.registry.TransFEBlockEntities;
+import me.quota73.transfe.registry.TransFEBlocks;
+import me.quota73.transfe.registry.TransFECreativeTabs;
+import me.quota73.transfe.registry.TransFEItems;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
@@ -33,18 +33,18 @@ public class TransFE {
     }
 
     public TransFE(IEventBus modEventBus, ModContainer modContainer) {
-        UnifeBlocks.BLOCKS.register(modEventBus);
-        UnifeItems.ITEMS.register(modEventBus);
-        UnifeBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        UnifeCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        TransFEBlocks.BLOCKS.register(modEventBus);
+        TransFEItems.ITEMS.register(modEventBus);
+        TransFEBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        TransFECreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(this::onRegisteringCapability);
     }
 
     public void onRegisteringCapability(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.IRON_FE_CONVERTER.get(), (be, c) -> be);
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.GOLD_FE_CONVERTER.get(), (be, c) -> be);
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.COPPER_FE_CONVERTER.get(), (be, c) -> be);
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.CREATIVE_FE_CONVERTER.get(), (be, c) -> be);
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, UnifeBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.IRON_FE_CONVERTER.get(), (be, c) -> be);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.GOLD_FE_CONVERTER.get(), (be, c) -> be);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.COPPER_FE_CONVERTER.get(), (be, c) -> be);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.CREATIVE_FE_CONVERTER.get(), (be, c) -> be);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
     }
 }

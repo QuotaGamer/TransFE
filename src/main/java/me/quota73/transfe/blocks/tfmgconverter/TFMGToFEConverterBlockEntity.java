@@ -1,7 +1,7 @@
 package me.quota73.transfe.blocks.tfmgconverter;
 
 import com.drmangotea.tfmg.content.electricity.base.ElectricBlockEntity;
-import me.quota73.transfe.registry.UnifeBlockEntities;
+import me.quota73.transfe.registry.TransFEBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -12,7 +12,7 @@ public class TFMGToFEConverterBlockEntity extends ElectricBlockEntity implements
         public void onEnergyChanged(int amount, int idk) { sendStuff(); }
     };
 
-    public TFMGToFEConverterBlockEntity(BlockPos pos, BlockState state) { super(UnifeBlockEntities.TFMG_FE_CONVERTER.get(), pos, state); }
+    public TFMGToFEConverterBlockEntity(BlockPos pos, BlockState state) { super(TransFEBlockEntities.TFMG_FE_CONVERTER.get(), pos, state); }
 
     @Override
     public void tick() {
