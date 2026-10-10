@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "unife:gold_fe_converter"
+          "name": "transfe:gold_fe_converter"
         }
       ],
       "conditions": [

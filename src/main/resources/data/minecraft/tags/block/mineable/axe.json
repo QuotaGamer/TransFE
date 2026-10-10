@@ -1,9 +1,9 @@
 {
   "values": [
-    "unife:copper_fe_converter",
-    "unife:iron_fe_converter",
-    "unife:gold_fe_converter",
-    "unife:creative_fe_converter",
-    "unife:tfmg_fe_converter"
+    "transfe:copper_fe_converter",
+    "transfe:iron_fe_converter",
+    "transfe:gold_fe_converter",
+    "transfe:creative_fe_converter",
+    "transfe:tfmg_fe_converter"
   ]
 }

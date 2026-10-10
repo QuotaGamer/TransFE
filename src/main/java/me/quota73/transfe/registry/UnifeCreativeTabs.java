@@ -1,6 +1,6 @@
 package me.quota73.transfe.registry;
 
-import me.quota73.transfe.UniFE;
+import me.quota73.transfe.TransFE;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnifeCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UniFE.MODID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TransFE.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CONVERTER_TAB = CREATIVE_MODE_TABS.register("converters", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.feConverters"))

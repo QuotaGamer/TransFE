@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "unife:tfmg_fe_converter"
+          "name": "transfe:tfmg_fe_converter"
         }
       ],
       "conditions": [

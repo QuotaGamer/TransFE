@@ -10,10 +10,10 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 
-@Mod(value = UniFE.MODID, dist = Dist.CLIENT)
-@EventBusSubscriber(modid = UniFE.MODID, value = Dist.CLIENT)
-public class UniFEClient {
-    public UniFEClient(ModContainer container) {
+@Mod(value = TransFE.MODID, dist = Dist.CLIENT)
+@EventBusSubscriber(modid = TransFE.MODID, value = Dist.CLIENT)
+public class TransFEClient {
+    public TransFEClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 

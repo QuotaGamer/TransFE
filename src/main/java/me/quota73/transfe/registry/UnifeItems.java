@@ -6,7 +6,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnifeItems {
     public static final DeferredRegister.Items ITEMS =
-            DeferredRegister.createItems("unife");
+            DeferredRegister.createItems("transfe");
 
     public static final DeferredItem<BlockItem> IRON_FE_CONVERTER =
             ITEMS.registerSimpleBlockItem("iron_fe_converter", UnifeBlocks.IRON_FE_CONVERTER);

@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnifeBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
-            DeferredRegister.createBlocks("unife");
+            DeferredRegister.createBlocks("transfe");
 
     public static final DeferredBlock<IronFEConverterBlock> IRON_FE_CONVERTER =
             BLOCKS.registerBlock("iron_fe_converter", IronFEConverterBlock::new,

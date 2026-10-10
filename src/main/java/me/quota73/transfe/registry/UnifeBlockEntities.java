@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnifeBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, "unife");
+            DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, "transfe");
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<IronFEConverterBlockEntity>> IRON_FE_CONVERTER =
             BLOCK_ENTITIES.register("iron_fe_converter", () ->

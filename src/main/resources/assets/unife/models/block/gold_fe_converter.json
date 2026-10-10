@@ -3,8 +3,8 @@
 	"parent": "block/block",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "unife:block/fe_converter_tex",
-		"particle": "unife:block/fe_converter_tex"
+		"1": "transfe:block/fe_converter_tex",
+		"particle": "transfe:block/fe_converter_tex"
 	},
 	"elements": [
 		{

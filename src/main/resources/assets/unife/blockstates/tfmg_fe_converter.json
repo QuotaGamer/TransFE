@@ -1,10 +1,10 @@
 {
   "variants": {
-    "facing=down":  { "model": "unife:block/tfmg_fe_converter" },
-    "facing=up":    { "model": "unife:block/tfmg_fe_converter" },
-    "facing=north": { "model": "unife:block/tfmg_fe_converter" },
-    "facing=south": { "model": "unife:block/tfmg_fe_converter" },
-    "facing=east":  { "model": "unife:block/tfmg_fe_converter" },
-    "facing=west":  { "model": "unife:block/tfmg_fe_converter" }
+    "facing=down":  { "model": "transfe:block/tfmg_fe_converter" },
+    "facing=up":    { "model": "transfe:block/tfmg_fe_converter" },
+    "facing=north": { "model": "transfe:block/tfmg_fe_converter" },
+    "facing=south": { "model": "transfe:block/tfmg_fe_converter" },
+    "facing=east":  { "model": "transfe:block/tfmg_fe_converter" },
+    "facing=west":  { "model": "transfe:block/tfmg_fe_converter" }
   }
 }

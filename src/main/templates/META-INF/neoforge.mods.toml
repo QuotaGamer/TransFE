@@ -3,7 +3,7 @@ modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
 
-issueTrackerURL="https://github.com/QuotaGamer/UniFE/issues"
+issueTrackerURL="https://github.com/QuotaGamer/TransFE/issues"
 
 
 [[mods]] #mandatory
@@ -13,7 +13,7 @@ displayName="${mod_name}"
 logoFile="icon.png"
 authors="FrostyBadHalo and Quota (@QuotaGamer on GitHub)"
 description='''
-UniFE bridges Forge Energy sources with Create: Power Grid's electrical networks.
+TransFE bridges Forge Energy sources with Create: Power Grid's electrical networks.
 '''
 
 [[mixins]]

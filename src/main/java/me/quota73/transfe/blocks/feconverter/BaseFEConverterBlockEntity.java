@@ -1,6 +1,6 @@
 package me.quota73.transfe.blocks.feconverter;
 
-import me.quota73.transfe.UniFE;
+import me.quota73.transfe.TransFE;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;
 
@@ -36,14 +36,14 @@ public class BaseFEConverterBlockEntity extends ElectricBlockEntity implements I
             public void tick() {
                 super.tick();
 
-                float oldVoltage = UniFE.calculateVoltage(feBuffer, MAX_VOLTAGE, MAX_BUFFER, MIN_BUFFER_VOLTAGE);
+                float oldVoltage = TransFE.calculateVoltage(feBuffer, MAX_VOLTAGE, MAX_BUFFER, MIN_BUFFER_VOLTAGE);
 
                 float current = (float) Math.abs(voltageSource.getCurrent());
                 float watts = oldVoltage * current;
                 long fe = Math.round(watts * 10);
                 feBuffer = Math.max(0, feBuffer - fe);
 
-                float newVoltage = UniFE.calculateVoltage(feBuffer, MAX_VOLTAGE, MAX_BUFFER, MIN_BUFFER_VOLTAGE);
+                float newVoltage = TransFE.calculateVoltage(feBuffer, MAX_VOLTAGE, MAX_BUFFER, MIN_BUFFER_VOLTAGE);
 
                 voltageSource.setVoltage(newVoltage);
                 setChanged();

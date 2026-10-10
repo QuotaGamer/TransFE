@@ -15,9 +15,9 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
 
 
-@Mod(UniFE.MODID)
-public class UniFE {
-    public static final String MODID = "unife";
+@Mod(TransFE.MODID)
+public class TransFE {
+    public static final String MODID = "transfe";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static float calculateVoltage(float FEBuffer, float maxVoltage, long maxBuffer, long minBuffer) {
@@ -32,7 +32,7 @@ public class UniFE {
         // So now when charge is *almost empty*, the voltage goes down, rather than always. (excluding internal resistance, which *also* drops voltage)
     }
 
-    public UniFE(IEventBus modEventBus, ModContainer modContainer) {
+    public TransFE(IEventBus modEventBus, ModContainer modContainer) {
         UnifeBlocks.BLOCKS.register(modEventBus);
         UnifeItems.ITEMS.register(modEventBus);
         UnifeBlockEntities.BLOCK_ENTITIES.register(modEventBus);
