@@ -48,3 +48,8 @@ The FE Converters (in Consumer mode) generate FE by pulling energy from the real
 ## License
 
 This project is licensed under the [MIT License](LICENSE), because I'm too lazy to change it to GPLv3.
+
+---
+
+## Thanks
+Thank you to [KLIPZzz](https://github.com/KILPZzz) for making [UniFE](https://github.com/KILPZzz/UniFE) which inspired me to build this off of his shortcomings.
