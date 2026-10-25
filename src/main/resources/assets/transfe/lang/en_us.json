@@ -1,8 +1,5 @@
 {
-  "block.transfe.iron_fe_converter": "Iron FE Converter (MV)",
-  "block.transfe.gold_fe_converter": "Gold FE Converter (MV)",
-  "block.transfe.copper_fe_converter": "Copper FE Converter (LV)",
-  "block.transfe.creative_fe_converter": "Creative FE Converter",
+  "block.transfe.fe_to_powergrid_converter": "Power Grid to FE Converter",
   "block.transfe.tfmg_fe_converter": "TFMG to FE Converter",
   "itemGroup.feConverters": "Energy Unit Converters"
 }

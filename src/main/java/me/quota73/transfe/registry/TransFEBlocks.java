@@ -1,10 +1,7 @@
 package me.quota73.transfe.registry;
 
-import me.quota73.transfe.blocks.feconverter.CreativeFEConverterBlock;
-import me.quota73.transfe.blocks.feconverter.GoldFEConverterBlock;
-import me.quota73.transfe.blocks.feconverter.IronFEConverterBlock;
-import me.quota73.transfe.blocks.feconverter.CopperFEConverterBlock;
-import me.quota73.transfe.blocks.tfmgconverter.TFMGToFEConverterBlock;
+import me.quota73.transfe.blocks.powergrid.ForgeEnergyToPowerGridBlock;
+import me.quota73.transfe.blocks.tfmg.TFMGToFEConverterBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -15,41 +12,8 @@ public class TransFEBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks("transfe");
 
-    public static final DeferredBlock<IronFEConverterBlock> IRON_FE_CONVERTER =
-            BLOCKS.registerBlock("iron_fe_converter", IronFEConverterBlock::new,
-                    BlockBehaviour.Properties.of()
-                            .mapColor(MapColor.METAL)
-                            .strength(3.0f, 6.0f)
-                            .sound(SoundType.WOOD)
-                            .noOcclusion()
-                            .explosionResistance(6.0f)
-                            .requiresCorrectToolForDrops()
-            );
-
-    public static final DeferredBlock<GoldFEConverterBlock> GOLD_FE_CONVERTER =
-            BLOCKS.registerBlock("gold_fe_converter", GoldFEConverterBlock::new,
-                    BlockBehaviour.Properties.of()
-                            .mapColor(MapColor.METAL)
-                            .strength(3.0f, 6.0f)
-                            .sound(SoundType.WOOD)
-                            .noOcclusion()
-                            .explosionResistance(6.0f)
-                            .requiresCorrectToolForDrops()
-            );
-
-    public static final DeferredBlock<CopperFEConverterBlock> COPPER_FE_CONVERTER =
-            BLOCKS.registerBlock("copper_fe_converter", CopperFEConverterBlock::new,
-                    BlockBehaviour.Properties.of()
-                            .mapColor(MapColor.METAL)
-                            .strength(3.0f, 6.0f)
-                            .sound(SoundType.WOOD)
-                            .noOcclusion()
-                            .explosionResistance(6.0f)
-                            .requiresCorrectToolForDrops()
-            );
-
-    public static final DeferredBlock<CreativeFEConverterBlock> CREATIVE_FE_CONVERTER =
-            BLOCKS.registerBlock("creative_fe_converter", CreativeFEConverterBlock::new,
+    public static final DeferredBlock<ForgeEnergyToPowerGridBlock> FE_TO_POWER_GRID_CONVERTER =
+            BLOCKS.registerBlock("fe_to_powergrid_converter", ForgeEnergyToPowerGridBlock::new,
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.METAL)
                             .strength(3.0f, 6.0f)

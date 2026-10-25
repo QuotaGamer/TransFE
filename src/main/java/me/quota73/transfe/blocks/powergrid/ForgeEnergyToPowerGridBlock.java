@@ -1,11 +1,11 @@
-package me.quota73.transfe.blocks.feconverter;
+package me.quota73.transfe.blocks.powergrid;
 
-import me.quota73.transfe.registry.TransFEBlockEntities;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
+import me.quota73.transfe.blocks.PowerState;
+import me.quota73.transfe.registry.TransFEBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -25,8 +24,10 @@ import org.patryk3211.powergrid.electricity.base.TerminalBoundingBox;
 import org.patryk3211.powergrid.electricity.base.terminals.BlockStateTerminalCollection;
 import org.patryk3211.powergrid.electricity.deviceconnector.DeviceConnectorBlock;
 
-public class IronFEConverterBlock extends DirectionalElectricBlock
-        implements IBE<IronFEConverterBlockEntity>, IWrenchable {
+public class ForgeEnergyToPowerGridBlock extends DirectionalElectricBlock
+        implements IBE<ForgeEnergyToPowerGridBlockEntity>, IWrenchable {
+
+    public PowerState powerState = PowerState.GENERATOR;
 
     private static final TerminalBoundingBox[] TERMINALS = {
             new TerminalBoundingBox(IDecoratedTerminal.POSITIVE, 13.25, 14, 1.25, 14.75, 16.75, 2.75)
@@ -41,7 +42,7 @@ public class IronFEConverterBlock extends DirectionalElectricBlock
 
     // going to be adjusted....
     // when? Because it seems like I got here first
-    public IronFEConverterBlock(Properties settings) {
+    public ForgeEnergyToPowerGridBlock(Properties settings) {
         super(settings);
         setTerminalCollection(
                 BlockStateTerminalCollection.builder(this)
@@ -49,12 +50,12 @@ public class IronFEConverterBlock extends DirectionalElectricBlock
                                 TERMINALS, terminal -> {
                                     Direction facing = state.getValue(FACING);
                                     return switch (facing) {
-                                        case UP    -> terminal.rotateAroundX(180);
+                                        case UP -> terminal.rotateAroundX(180);
                                         case NORTH -> terminal.rotateAroundZ(90).rotateAroundY(90);
                                         case SOUTH -> terminal.rotateAroundZ(90).rotateAroundY(-90);
-                                        case EAST  -> terminal.rotateAroundZ(-90);
-                                        case WEST  -> terminal.rotateAroundZ(90);
-                                        default    -> terminal;
+                                        case EAST -> terminal.rotateAroundZ(-90);
+                                        case WEST -> terminal.rotateAroundZ(90);
+                                        default -> terminal;
                                     };
                                 }
                         ))
@@ -71,13 +72,9 @@ public class IronFEConverterBlock extends DirectionalElectricBlock
     @Override
     public @NotNull InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-
         if (!level.isClientSide) {
-            Direction current = state.getValue(FACING);
-            Direction next = current.getClockWise(); // rotação horizontal // English, please... I think you said rotation horizontal but I'm not 100% sure
-            level.setBlock(pos, state.setValue(FACING, next), 3);
-            IWrenchable.playRotateSound(level, pos);
+            if (powerState == PowerState.GENERATOR) powerState = PowerState.CONSUMER;
+            else powerState = PowerState.GENERATOR;
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide);
@@ -127,12 +124,12 @@ public class IronFEConverterBlock extends DirectionalElectricBlock
     }
 
     @Override
-    public Class<IronFEConverterBlockEntity> getBlockEntityClass() {
-        return IronFEConverterBlockEntity.class;
+    public Class<ForgeEnergyToPowerGridBlockEntity> getBlockEntityClass() {
+        return ForgeEnergyToPowerGridBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends IronFEConverterBlockEntity> getBlockEntityType() {
-        return TransFEBlockEntities.IRON_FE_CONVERTER.get();
+    public BlockEntityType<? extends ForgeEnergyToPowerGridBlockEntity> getBlockEntityType() {
+        return TransFEBlockEntities.FE_TO_POWER_GRID_CONVERTER.get();
     }
 }

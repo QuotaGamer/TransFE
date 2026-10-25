@@ -1,4 +1,4 @@
-package me.quota73.transfe.blocks.tfmgconverter;
+package me.quota73.transfe.blocks.tfmg;
 
 import com.drmangotea.tfmg.content.electricity.storage.TFMGForgeEnergyStorage;
 

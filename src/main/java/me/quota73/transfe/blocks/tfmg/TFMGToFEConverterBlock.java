@@ -1,5 +1,6 @@
-package me.quota73.transfe.blocks.feconverter;
+package me.quota73.transfe.blocks.tfmg;
 
+import com.drmangotea.tfmg.base.blocks.TFMGDirectionalBlock;
 import me.quota73.transfe.registry.TransFEBlockEntities;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
@@ -19,48 +20,11 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-import org.patryk3211.powergrid.electricity.base.DirectionalElectricBlock;
-import org.patryk3211.powergrid.electricity.base.IDecoratedTerminal;
-import org.patryk3211.powergrid.electricity.base.TerminalBoundingBox;
-import org.patryk3211.powergrid.electricity.base.terminals.BlockStateTerminalCollection;
 import org.patryk3211.powergrid.electricity.deviceconnector.DeviceConnectorBlock;
 
-public class CreativeFEConverterBlock extends DirectionalElectricBlock
-        implements IBE<CreativeFEConverterBlockEntity>, IWrenchable {
-
-    private static final TerminalBoundingBox[] TERMINALS = {
-            new TerminalBoundingBox(IDecoratedTerminal.POSITIVE, 13.25, 14, 1.25, 14.75, 16.75, 2.75)
-                    .withColor(16726843),
-            new TerminalBoundingBox(IDecoratedTerminal.NEGATIVE, 1.25, 14, 1.25, 2.75, 16.75, 2.75)
-                    .withColor(3899647),
-            new TerminalBoundingBox(IDecoratedTerminal.POSITIVE, 1.25, 14, 13.25, 2.75, 16.75, 14.75)
-                    .withColor(16726843),
-            new TerminalBoundingBox(IDecoratedTerminal.NEGATIVE, 13.25, 14, 13.25, 14.75, 16.75, 14.75)
-                    .withColor(3899647)
-    };
-
-    // going to be adjusted....
-    // when? Because it seems like I got here first
-    public CreativeFEConverterBlock(Properties settings) {
-        super(settings);
-        setTerminalCollection(
-                BlockStateTerminalCollection.builder(this)
-                        .forAllStates(state -> BlockStateTerminalCollection.each(
-                                TERMINALS, terminal -> {
-                                    Direction facing = state.getValue(FACING);
-                                    return switch (facing) {
-                                        case UP    -> terminal.rotateAroundX(180);
-                                        case NORTH -> terminal.rotateAroundZ(90).rotateAroundY(90);
-                                        case SOUTH -> terminal.rotateAroundZ(90).rotateAroundY(-90);
-                                        case EAST  -> terminal.rotateAroundZ(-90);
-                                        case WEST  -> terminal.rotateAroundZ(90);
-                                        default    -> terminal;
-                                    };
-                                }
-                        ))
-                        .build()
-        );
-    }
+public class TFMGToFEConverterBlock extends TFMGDirectionalBlock
+        implements IBE<TFMGToFEConverterBlockEntity>, IWrenchable {
+    public TFMGToFEConverterBlock(Properties settings) { super(settings); }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
@@ -108,14 +72,12 @@ public class CreativeFEConverterBlock extends DirectionalElectricBlock
         return InteractionResult.SUCCESS;
     }
 
+
     @Override
     public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
-        ItemStack tool = player.getMainHandItem();
-        if (tool.getItem() instanceof AxeItem) {
-            return super.getDestroyProgress(state, player, level, pos) * 5.0f;
-        }
-        return super.getDestroyProgress(state, player, level, pos);
+        return super.getDestroyProgress(state, player, level, pos) * ((player.getMainHandItem().getItem() instanceof AxeItem) ? 5.0f : 1.0f);
     }
+
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
@@ -127,12 +89,12 @@ public class CreativeFEConverterBlock extends DirectionalElectricBlock
     }
 
     @Override
-    public Class<CreativeFEConverterBlockEntity> getBlockEntityClass() {
-        return CreativeFEConverterBlockEntity.class;
+    public Class<TFMGToFEConverterBlockEntity> getBlockEntityClass() {
+        return TFMGToFEConverterBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CreativeFEConverterBlockEntity> getBlockEntityType() {
-        return TransFEBlockEntities.CREATIVE_FE_CONVERTER.get();
+    public BlockEntityType<? extends TFMGToFEConverterBlockEntity> getBlockEntityType() {
+        return TransFEBlockEntities.TFMG_FE_CONVERTER.get();
     }
 }
