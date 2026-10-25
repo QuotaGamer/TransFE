@@ -12,14 +12,14 @@ public class TransFEBlockEntities {
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, "transfe");
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ForgeEnergyToPowerGridBlockEntity>> FE_TO_POWER_GRID_CONVERTER =
-            BLOCK_ENTITIES.register("fe_to_powergrid_converter", () ->
+            BLOCK_ENTITIES.register("powergrid_converter", () ->
                     BlockEntityType.Builder
                             .of(ForgeEnergyToPowerGridBlockEntity::new, TransFEBlocks.FE_TO_POWER_GRID_CONVERTER.get())
                             .build(null)
             );
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TFMGToFEConverterBlockEntity>> TFMG_FE_CONVERTER =
-            BLOCK_ENTITIES.register("tfmg_fe_converter", () ->
+            BLOCK_ENTITIES.register("tfmg_converter", () ->
                     BlockEntityType.Builder
                             .of(TFMGToFEConverterBlockEntity::new, TransFEBlocks.TFMG_FE_CONVERTER.get())
                             .build(null)

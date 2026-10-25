@@ -1,6 +1,6 @@
 {
   "values": [
-    "transfe:fe_to_powergrid_converter",
-    "transfe:tfmg_fe_converter"
+    "transfe:powergrid_converter",
+    "transfe:tfmg_converter"
   ]
 }

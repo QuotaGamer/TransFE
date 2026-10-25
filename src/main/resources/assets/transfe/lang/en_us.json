@@ -1,5 +1,5 @@
 {
-  "block.transfe.fe_to_powergrid_converter": "Power Grid to FE Converter",
-  "block.transfe.tfmg_fe_converter": "TFMG to FE Converter",
+  "block.transfe.powergrid_converter": "Power Grid to FE Converter",
+  "block.transfe.tfmg_converter": "TFMG to FE Converter",
   "itemGroup.feConverters": "Energy Unit Converters"
 }

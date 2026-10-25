@@ -9,8 +9,8 @@ public class TransFEItems {
             DeferredRegister.createItems("transfe");
 
     public static final DeferredItem<BlockItem> FE_TO_POWER_GRID_CONVERTER =
-            ITEMS.registerSimpleBlockItem("fe_to_powergrid_converter", TransFEBlocks.FE_TO_POWER_GRID_CONVERTER);
+            ITEMS.registerSimpleBlockItem("powergrid_converter", TransFEBlocks.FE_TO_POWER_GRID_CONVERTER);
 
     public static final DeferredItem<BlockItem> TFMG_FE_CONVERTER =
-            ITEMS.registerSimpleBlockItem("tfmg_fe_converter", TransFEBlocks.TFMG_FE_CONVERTER);
+            ITEMS.registerSimpleBlockItem("tfmg_converter", TransFEBlocks.TFMG_FE_CONVERTER);
 }
