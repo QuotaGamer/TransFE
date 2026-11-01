@@ -52,7 +52,7 @@ The FE Converters (in Consumer mode) generate FE by pulling energy from the real
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE), because I'm too lazy to change it to GPLv3.
+This project is licensed under the [GNU General Public License (Version 3)](LICENSE), because it's cute like me :3
 
 ---
 
