@@ -1,6 +1,6 @@
 # TransFE
 
-**TransFE** is a Minecraft compatibility mod that bridges FE (Forge Energy) power systems with the electrical simulation from [Create: Power Grid](https://github.com/patryk3211/PowerGrid) and [Create: The Factory Must Grow](https://github.com/DrMango14/Create-The_Factory_Must_Grow), allowing generators and machines that generate/consume FE, Power Grid Watts, or TFMG Watts to be powered by one, or multiple, of the others.
+**TransFE** is a Minecraft compatibility mod that bridges FE (Forge Energy) power systems with the electrical simulation from [Create: Power Grid](https://github.com/patryk3211/PowerGrid) and [Create: The Factory Must Grow (TFMG)](https://github.com/DrMango14/Create-The_Factory_Must_Grow), allowing machines that generate/consume FE or Power Grid/TFMG power to use the others.
 
 ---
 
