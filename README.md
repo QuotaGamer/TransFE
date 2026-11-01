@@ -17,7 +17,7 @@ A block that reads FE energy from neighboring machines and converts it into prop
 
 | Mod | Version |
 |-----|---------|
-| [Create](https://modrinth.com/mod/create) | 0.5.1 (1.20.1) / 6.0 (1.21.1) |
+| [Create](https://modrinth.com/mod/create) | 6.0+ |
 | [Create: Power Grid](https://github.com/patryk3211/PowerGrid) | 0.5.4+ |
 | [Create: The Factory Must Grow](https://github.com/DrMango14/Create-The_Factory_Must_Grow) | 1.2.0+ |
 ---
