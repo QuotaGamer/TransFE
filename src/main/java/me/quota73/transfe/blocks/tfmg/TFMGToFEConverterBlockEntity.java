@@ -27,13 +27,14 @@ public class TFMGToFEConverterBlockEntity extends ElectricBlockEntity implements
     public void tick() {
         if (this.level != null && this.level.isClientSide) return;
         super.tick();
-        System.out.println(powerGeneration());
         if (this.level != null) redstonePower = this.level.getBestNeighborSignal(this.worldPosition);
         if (redstonePower == 0) {
             int usage = getPowerUsage();
-            energy.setCapacity(Math.max(1, usage * 2));
-            energy.setEnergy(Math.min(energy.getEnergyStored(), usage * 2));
-            receiveEnergy(usage, false);
+            if (getNetworkPowerGeneration() < getNetworkPowerUsage()) {
+                energy.setCapacity(Math.max(1, usage * 2));
+                energy.setEnergy(Math.min(energy.getEnergyStored(), usage * 2));
+                receiveEnergy(usage, false);
+            }
         } else if (getNetworkPowerGeneration() != 0) {
             if (energy.getMaxEnergyStored() != 256_000) energy.setCapacity(256_000);
             this.extractEnergy((int) Math.ceil(getNetworkPowerUsage() * ((double) powerGeneration() / getNetworkPowerGeneration()) / TFMGConfigs.common().machines.FEtoWattTickConversionRate.get()), false);

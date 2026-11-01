@@ -87,9 +87,6 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
                 this.applyPower(conn1);
                 this.applyPower(conn2);
 
-                System.out.println("Conn 1: " + conn1.current());
-                System.out.println("Conn 2: " + conn2.current());
-
                 double watts = (conn1.current() * v1) + (conn2.current() * v2);
                 double feIn = watts * 10;
                 feBuffer = (long) Math.min(maxBuffer, feBuffer + feIn);
