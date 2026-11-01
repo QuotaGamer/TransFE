@@ -22,9 +22,9 @@ When powered, it is a block that pulls electrical power from connected Power Gri
 
 | Mod | Version |
 |-----|---------|
-| [Create](https://modrinth.com/mod/create) | 6.0+ |
-| [Create: Power Grid](https://github.com/patryk3211/PowerGrid) | 0.5.4+ |
-| [Create: The Factory Must Grow](https://github.com/DrMango14/Create-The_Factory_Must_Grow) | 1.2.0+ |
+| [Create](https://modrinth.com/mod/create) | 6.0.9-215 or newer (older might work too) |
+| [Create: Power Grid](https://github.com/patryk3211/PowerGrid) | 0.5.4 or newer (older might work too) |
+| [Create: The Factory Must Grow](https://github.com/DrMango14/Create-The_Factory_Must_Grow) | 1.2.0 or newer (older might work too but honestly tfmg is so buggy you shouldn't go newer or older) |
 ---
 
 ## Supported Versions
