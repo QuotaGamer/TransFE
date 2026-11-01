@@ -25,6 +25,7 @@ When powered, it is a block that pulls electrical power from connected Power Gri
 | [Create](https://modrinth.com/mod/create) | 6.0.9-215 or newer (older might work too) |
 | [Create: Power Grid](https://github.com/patryk3211/PowerGrid) | 0.5.4 or newer (older might work too) |
 | [Create: The Factory Must Grow](https://github.com/DrMango14/Create-The_Factory_Must_Grow) | 1.2.0 or newer (older might work too but honestly tfmg is so buggy you shouldn't go newer or older) |
+
 ---
 
 ## Supported Versions
@@ -35,7 +36,7 @@ When powered, it is a block that pulls electrical power from connected Power Gri
 
 ---
 
-# How to use
+## How to use
 - **Place** the converter in the world
 - **Connect** it to your energy network using the terminals on the top (Power Grid) or Insulators/Cable Hubs (TFMG)
 - (Optionally,) **Power** it with Redstone to turn it into a Consumer instead of a Generator
