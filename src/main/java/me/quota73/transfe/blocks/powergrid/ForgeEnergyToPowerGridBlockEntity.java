@@ -14,21 +14,22 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 import org.patryk3211.powergrid.electricity.base.ElectricBehaviour;
 import org.patryk3211.powergrid.electricity.base.ElectricBlockEntity;
 import org.patryk3211.powergrid.electricity.base.IElectricEntity;
+import org.patryk3211.powergrid.electricity.creative.CreativeSourceValueBehaviour;
 import org.patryk3211.powergrid.electricity.sim.ElectricWire;
 import org.patryk3211.powergrid.electricity.sim.node.VoltageSourceCoupling;
 
 import java.util.List;
 
 public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity implements IEnergyStorage {
-    private VoltageSourceCoupling voltageSource;
-    private ScrollValueBehaviour powerSlider;
-    private ElectricWire conn1;
-    private ElectricWire conn2;
-    private long                  feBuffer;
-    private long                  maxBuffer = 16_384L;
-    private int                   target = 120;
-    private int                   lastPower = -1;
-    private static final long     MIN_BUFFER_VOLTAGE = 32768L;
+    private VoltageSourceCoupling        voltageSource;
+    private CreativeSourceValueBehaviour powerSlider;
+    private ElectricWire                 conn1;
+    private ElectricWire                 conn2;
+    private long                         feBuffer;
+    private long                         maxBuffer = 16_384L;
+    private int                          target = 120;
+    private int                          lastPower = -1;
+    private static final long            MIN_BUFFER_VOLTAGE = 32768L;
 
     public ForgeEnergyToPowerGridBlockEntity(BlockPos pos, BlockState state) { super(TransFEBlockEntities.FE_TO_POWER_GRID_CONVERTER.get(), pos, state); }
 
@@ -43,8 +44,8 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         electricBehaviour = new ElectricBehaviour(this);
         behaviours.add(electricBehaviour);
 
-        powerSlider = new ScrollValueBehaviour(Component.literal("Targeted Output (increments of 10V / 10W depending on mode)"), this, new CenteredSideValueBoxTransform());
-        powerSlider.between(0, 500);
+        powerSlider = new CreativeSourceValueBehaviour(Component.literal("Targeted Output (Watts / FE depending on mode)"), this, 1.0f, new CenteredSideValueBoxTransform());
+        powerSlider.between(0, 250);
         powerSlider.withCallback(this::updateTarget);
         behaviours.add(powerSlider);
     }
