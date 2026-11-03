@@ -67,12 +67,14 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
 
     @Override
     public void electricalTick() {
+        conn1.setResistance(Double.MAX_VALUE);
+        conn2.setResistance(Double.MAX_VALUE);
         if (this.level != null) {
             int power = this.level.getBestNeighborSignal(this.worldPosition);
             if (power != 0) {
                 if (lastPower == 0) {
                     voltageSource.setVoltage(0);
-                    this.maxBuffer = Math.max(this.maxBuffer, 1_024_000L);
+                    this.maxBuffer = Math.max(this.maxBuffer, 10_000_000L);
                 }
 
                 double v1 = conn1.potentialDifference();
@@ -131,14 +133,15 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
 
     @Override public int getEnergyStored() { return (int) this.feBuffer; }
     @Override public int getMaxEnergyStored() { return (int) maxBuffer; }
-    @Override public boolean canExtract() { return false; }
-    @Override public boolean canReceive() { return true; }
+    @Override public boolean canExtract() { return this.lastPower != 0; }
+    @Override public boolean canReceive() { return this.lastPower == 0; }
 
     @Override
     protected void write(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         super.write(compound, registries, clientPacket);
         compound.putLong("forge_energy", this.feBuffer);
         compound.putLong("max_forge_energy", this.maxBuffer);
+        compound.putInt("last_redstone_power", this.lastPower);
     }
 
     @Override
@@ -146,5 +149,6 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         super.read(compound, registries, clientPacket);
         this.feBuffer = compound.getLong("forge_energy");
         this.maxBuffer = compound.getLong("max_forge_energy");
+        this.lastPower = compound.getInt("last_redstone_power");
     }
 }
