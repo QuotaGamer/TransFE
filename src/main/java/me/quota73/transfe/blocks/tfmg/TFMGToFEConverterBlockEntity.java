@@ -30,7 +30,7 @@ public class TFMGToFEConverterBlockEntity extends ElectricBlockEntity implements
         if (this.level != null) redstonePower = this.level.getBestNeighborSignal(this.worldPosition);
         if (redstonePower == 0) {
             int usage = getPowerUsage();
-            if (getNetworkPowerGeneration() < getNetworkPowerUsage()) {
+            if (getNetworkPowerGeneration() > getNetworkPowerUsage()) {
                 energy.setCapacity(Math.max(1, usage * 2));
                 energy.setEnergy(Math.min(energy.getEnergyStored(), usage * 2));
                 receiveEnergy(usage, false);
