@@ -154,6 +154,7 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         compound.putLong("forge_energy", this.feBuffer);
         compound.putLong("max_forge_energy", this.maxBuffer);
         compound.putInt("last_redstone_power", this.lastPower);
+        compound.putInt("power_generation", this.powerSlider.getValue());
     }
 
     @Override
@@ -162,5 +163,6 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         this.feBuffer = compound.getLong("forge_energy");
         this.maxBuffer = compound.getLong("max_forge_energy");
         this.lastPower = compound.getInt("last_redstone_power");
+        updateTarget(compound.getInt("power_generation"));
     }
 }
