@@ -20,12 +20,13 @@ import org.patryk3211.powergrid.electricity.base.IElectricEntity;
 import org.patryk3211.powergrid.electricity.creative.CreativeSourceValueBehaviour;
 import org.patryk3211.powergrid.electricity.sim.ElectricWire;
 import org.patryk3211.powergrid.electricity.sim.node.VoltageSourceCoupling;
+import org.patryk3211.powergrid.utility.Lang;
 
 import java.util.List;
 
 public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity implements IEnergyStorage {
     private VoltageSourceCoupling        voltageSource;
-    private CreativeSourceValueBehaviour powerSlider;
+    private ScrollValueBehaviour         powerSlider;
     private ElectricWire                 conn1;
     private ElectricWire                 conn2;
     private long                         feBuffer;
@@ -48,11 +49,11 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         electricBehaviour = new ElectricBehaviour(this);
         behaviours.add(electricBehaviour);
 
-        powerSlider = new CreativeSourceValueBehaviour(Component.literal("Targeted Output (Watts / FE depending on mode)"), this, 1.0f, new CenteredSideValueBoxTransform()) {
+        powerSlider = new ScrollValueBehaviour(Component.literal("Targeted Output (Watts / FE depending on mode)"), this, new CenteredSideValueBoxTransform()) {
             @Override
             public ValueSettingsBoard createBoard(Player player, BlockHitResult hitResult) {
                 ImmutableList<Component> rows = ImmutableList.of(Component.literal("+1"), Component.literal("+100"));
-                ValueSettingsFormatter formatter = new ValueSettingsFormatter(this::formatSettings);
+                ValueSettingsFormatter formatter = new ValueSettingsFormatter(s -> Lang.number(Math.max(0.0F, Math.abs((float) s.value()))).component());
                 return new ValueSettingsBoard(this.label, 250, 20, rows, formatter);
             }
         };
