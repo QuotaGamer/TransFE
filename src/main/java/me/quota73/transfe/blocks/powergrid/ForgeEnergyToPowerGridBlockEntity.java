@@ -56,6 +56,12 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
                 ValueSettingsFormatter formatter = new ValueSettingsFormatter(s -> Lang.number(Math.max(0.0F, Math.abs((float) s.value()))).component());
                 return new ValueSettingsBoard(this.label, 250, 20, rows, formatter);
             }
+
+            @Override
+            public void setValueSettings(Player player, ValueSettingsBehaviour.ValueSettings setting, boolean ctrl) {
+                int value = Math.max(0, setting.value());
+                this.setValue(setting.row() == 0 ? value : -value);
+            }
         };
         powerSlider.between(-250, 250);
         powerSlider.withCallback(this::updateTarget);
