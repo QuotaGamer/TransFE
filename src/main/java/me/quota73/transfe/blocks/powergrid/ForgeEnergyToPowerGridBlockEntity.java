@@ -1,5 +1,6 @@
 package me.quota73.transfe.blocks.powergrid;
 
+import com.google.common.collect.ImmutableList;
 import com.simibubi.create.foundation.blockEntity.behaviour.*;
 import com.simibubi.create.foundation.blockEntity.behaviour.scrollValue.ScrollValueBehaviour;
 import me.quota73.transfe.TransFE;
@@ -9,7 +10,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import org.patryk3211.powergrid.electricity.base.ElectricBehaviour;
 import org.patryk3211.powergrid.electricity.base.ElectricBlockEntity;
@@ -34,7 +37,8 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
     public ForgeEnergyToPowerGridBlockEntity(BlockPos pos, BlockState state) { super(TransFEBlockEntities.FE_TO_POWER_GRID_CONVERTER.get(), pos, state); }
 
     private void updateTarget(int newValue) {
-        target = newValue;
+        target = newValue >= 0 ? newValue : (Math.abs(newValue) * 100);
+        System.out.println(target);
         powerSlider.setValue(newValue);
         setChanged();
     }
@@ -44,8 +48,15 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         electricBehaviour = new ElectricBehaviour(this);
         behaviours.add(electricBehaviour);
 
-        powerSlider = new CreativeSourceValueBehaviour(Component.literal("Targeted Output (Watts / FE depending on mode)"), this, 1.0f, new CenteredSideValueBoxTransform());
-        powerSlider.between(0, 250);
+        powerSlider = new CreativeSourceValueBehaviour(Component.literal("Targeted Output (Watts / FE depending on mode)"), this, 1.0f, new CenteredSideValueBoxTransform()) {
+            @Override
+            public ValueSettingsBoard createBoard(Player player, BlockHitResult hitResult) {
+                ImmutableList<Component> rows = ImmutableList.of(Component.literal("+1"), Component.literal("+100"));
+                ValueSettingsFormatter formatter = new ValueSettingsFormatter(this::formatSettings);
+                return new ValueSettingsBoard(this.label, 250, 20, rows, formatter);
+            }
+        };
+        powerSlider.between(-250, 250);
         powerSlider.withCallback(this::updateTarget);
         behaviours.add(powerSlider);
     }
