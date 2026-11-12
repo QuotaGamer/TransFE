@@ -1,5 +1,6 @@
 package me.quota73.transfe.registry;
 
+import me.quota73.transfe.TransFE;
 import me.quota73.transfe.blocks.powergrid.ForgeEnergyToPowerGridBlock;
 import me.quota73.transfe.blocks.tfmg.TFMGToFEConverterBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -15,7 +16,7 @@ public class TransFEBlocks {
     public static DeferredBlock<TFMGToFEConverterBlock> TFMG_FE_CONVERTER = null;
 
     public static void makeEntries() {
-        if (ModList.get().isLoaded("powegrid"))
+        if (ModList.get().isLoaded(TransFE.POWER_GRID) && POWERGRID_FE_CONVERTER == null)
             POWERGRID_FE_CONVERTER = BLOCKS.registerBlock("powergrid_converter", ForgeEnergyToPowerGridBlock::new,
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.METAL)
@@ -26,7 +27,7 @@ public class TransFEBlocks {
                             .requiresCorrectToolForDrops()
             );
 
-        if (ModList.get().isLoaded("tfmg"))
+        if (ModList.get().isLoaded(TransFE.TFMG) && TFMG_FE_CONVERTER == null)
             TFMG_FE_CONVERTER = BLOCKS.registerBlock("tfmg_converter", TFMGToFEConverterBlock::new,
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.METAL)

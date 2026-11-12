@@ -1,5 +1,6 @@
 package me.quota73.transfe.registry;
 
+import me.quota73.transfe.TransFE;
 import me.quota73.transfe.blocks.powergrid.ForgeEnergyToPowerGridBlockEntity;
 import me.quota73.transfe.blocks.tfmg.TFMGToFEConverterBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,14 +15,14 @@ public class TransFEBlockEntities {
     public static DeferredHolder<BlockEntityType<?>, BlockEntityType<TFMGToFEConverterBlockEntity>> TFMG_FE_CONVERTER = null;
 
     public static void makeEntries() {
-        if (ModList.get().isLoaded("powergrid"))
+        if (ModList.get().isLoaded(TransFE.POWER_GRID) && POWERGRID_FE_CONVERTER == null && TransFEBlocks.POWERGRID_FE_CONVERTER != null)
             POWERGRID_FE_CONVERTER = BLOCK_ENTITIES.register("powergrid_converter", () ->
                     BlockEntityType.Builder
                             .of(ForgeEnergyToPowerGridBlockEntity::new, TransFEBlocks.POWERGRID_FE_CONVERTER.get())
                             .build(null)
             );
 
-        if (ModList.get().isLoaded("tfmg"))
+        if (ModList.get().isLoaded(TransFE.TFMG) && TFMG_FE_CONVERTER == null && TransFEBlocks.TFMG_FE_CONVERTER != null)
             TFMG_FE_CONVERTER = BLOCK_ENTITIES.register("tfmg_converter", () ->
                     BlockEntityType.Builder
                             .of(TFMGToFEConverterBlockEntity::new, TransFEBlocks.TFMG_FE_CONVERTER.get())

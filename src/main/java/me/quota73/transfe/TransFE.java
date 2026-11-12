@@ -18,14 +18,23 @@ import net.neoforged.fml.ModContainer;
 @Mod(TransFE.MODID)
 public class TransFE {
     public static final String MODID = "transfe";
+    public static final String POWER_GRID = "powergrid";
+    public static final String TFMG = "tfmg";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static float calculateVoltage(float FEBuffer, float maxVoltage, long maxBuffer, long minBuffer) {
         return FEBuffer >= minBuffer ? maxVoltage : (float) Math.sqrt(FEBuffer / minBuffer) * maxVoltage;
     }
 
-    public TransFE(IEventBus modEventBus, ModContainer modContainer) {
+    public static void makeAll() {
         TransFEBlocks.makeEntries();
+        TransFEItems.makeEntries();
+        TransFEBlockEntities.makeEntries();
+        TransFECreativeTabs.makeEntries();
+    } static { makeAll(); }
+
+    public TransFE(IEventBus modEventBus, ModContainer ignored) {
+        makeAll();
         TransFEBlocks.BLOCKS.register(modEventBus);
         TransFEItems.ITEMS.register(modEventBus);
         TransFEBlockEntities.BLOCK_ENTITIES.register(modEventBus);
@@ -34,7 +43,8 @@ public class TransFE {
     }
 
     public void onRegisteringCapability(RegisterCapabilitiesEvent event) {
-        if (TransFEBlockEntities.POWERGRID_FE_CONVERTER.get() != null) event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.POWERGRID_FE_CONVERTER.get(), (be, c) -> be);
-        if (TransFEBlockEntities.TFMG_FE_CONVERTER.get() != null) event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
+        makeAll();
+        if (TransFEBlockEntities.POWERGRID_FE_CONVERTER != null) event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.POWERGRID_FE_CONVERTER.get(), (be, c) -> be);
+        if (TransFEBlockEntities.TFMG_FE_CONVERTER != null) event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
     }
 }

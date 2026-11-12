@@ -38,7 +38,7 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
 
     private void updateTarget(int newValue) {
         target = newValue >= 0 ? newValue : (Math.abs(newValue) * 100);
-        System.out.println(target);
+        TransFE.LOGGER.debug("Target output/input set to {}", target);
         powerSlider.setValue(newValue);
         setChanged();
     }
@@ -48,7 +48,7 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
         electricBehaviour = new ElectricBehaviour(this);
         behaviours.add(electricBehaviour);
 
-        powerSlider = new ScrollValueBehaviour(Component.literal("Targeted Output (Watts / FE depending on mode)"), this, new CenteredSideValueBoxTransform()) {
+        powerSlider = new ScrollValueBehaviour(Component.literal("Power Target (Watts IN / Voltage OUT depending on mode)"), this, new CenteredSideValueBoxTransform()) {
             @Override
             public ValueSettingsBoard createBoard(Player player, BlockHitResult hitResult) {
                 ImmutableList<Component> rows = ImmutableList.of(Component.literal("+1"), Component.literal("+100"));
@@ -100,11 +100,11 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
 
                 double watts = (conn1.current() * v);
                 double feIn = watts * 10;
-//                TransFE.LOGGER.info("[Consumer] Voltage across connections: " + v);
-//                TransFE.LOGGER.info("[Consumer] Power drawn: " + watts + "W (" + feIn + " FE)");
-//                TransFE.LOGGER.info("[Consumer] Power draw target: " + target + "W");
-//                TransFE.LOGGER.info("[Consumer] Connection resistance: " + conn1.getResistance());
-//                TransFE.LOGGER.info("[Consumer] Source current: " + voltageSource.getCurrent());
+                TransFE.LOGGER.debug("[Consumer] Voltage across connections: {}V", v);
+                TransFE.LOGGER.debug("[Consumer] Power drawn: {}W ({} FE)", watts, feIn);
+                TransFE.LOGGER.debug("[Consumer] Power draw target: {}W", target);
+                TransFE.LOGGER.debug("[Consumer] Connection resistance: {}Ω", conn1.getResistance());
+                TransFE.LOGGER.debug("[Consumer] Source current: {}A", voltageSource.getCurrent());
                 feBuffer = (long) Math.min(maxBuffer, feBuffer + feIn);
                 if (feBuffer == maxBuffer) updateTarget(0);
 
@@ -121,16 +121,16 @@ public class ForgeEnergyToPowerGridBlockEntity extends ElectricBlockEntity imple
 
                 float newVoltage = TransFE.calculateVoltage(feBuffer, target, maxBuffer, MIN_BUFFER_VOLTAGE);
 
-//                TransFE.LOGGER.info("[Generator] Old voltage: " + oldVoltage);
-//                TransFE.LOGGER.info("[Generator] New voltage: " + newVoltage);
-//                TransFE.LOGGER.info("[Generator] voltageSource voltage (should be equal to old voltage): " + voltageSource.getVoltage());
-//                TransFE.LOGGER.info("[Generator] Current draw (old): " + current + "A");
-//                TransFE.LOGGER.info("[Generator] Power draw (old): " + watts + "W (" + fe + " FE)");
-//                TransFE.LOGGER.info("[Generator] Voltage across conn1 (should be equal to New): " + conn1.potentialDifference());
-//                TransFE.LOGGER.info("[Generator] Current across conn1 (should be NOTHING): " + conn1.current());
+                TransFE.LOGGER.debug("[Generator] Old voltage: {}V", oldVoltage);
+                TransFE.LOGGER.debug("[Generator] New voltage: {}V", newVoltage);
+                TransFE.LOGGER.debug("[Generator] voltageSource voltage (should be equal to old voltage): {}V", voltageSource.getVoltage());
+                TransFE.LOGGER.debug("[Generator] Current draw (old): {}A", current);
+                TransFE.LOGGER.debug("[Generator] Power draw (old): {}W ({} FE)", watts, fe);
+                TransFE.LOGGER.debug("[Generator] Voltage across conn1 (should be equal to New): {}V", conn1.potentialDifference());
+                TransFE.LOGGER.debug("[Generator] Current across conn1 (should be NOTHING): {}A", conn1.current());
 
                 voltageSource.setVoltage(newVoltage);
-//                TransFE.LOGGER.info("[Generator] voltageSource voltage (should now be equal to new voltage): " + voltageSource.getVoltage());
+                TransFE.LOGGER.debug("[Generator] voltageSource voltage (should now be equal to new voltage): {}V", voltageSource.getVoltage());
                 setChanged();
             }
             lastPower = power;
