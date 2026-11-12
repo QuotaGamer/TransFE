@@ -53,9 +53,9 @@ The FE Converters (in Consumer mode) generate FE by pulling energy from the real
 
 ## License
 
-This project is licensed under the [GNU General Public License (Version 3)](LICENSE), because it's cute like me :3
+This project is licensed under the [GNU General Public License (Version 3)](LICENSE), because it's cute (like me! :3)
 
 ---
 
 ## Thanks
-Thank you to [KLIPZzz](https://github.com/KILPZzz) for making [UniFE](https://github.com/KILPZzz/UniFE) which inspired me to build this off of his shortcomings.
+Thank you to [KLIPZzz](https://github.com/KILPZzz) for making [UniFE](https://github.com/KILPZzz/UniFE) which inspired me to build this off of it.

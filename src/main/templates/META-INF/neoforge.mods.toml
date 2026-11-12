@@ -33,27 +33,20 @@ TransFE bridges Forge Energy sources with Create: Power Grid and Create: The Fac
 [[dependencies.${mod_id}]]
 modId = "create"
 type = "required"
-versionRange = "[6.0.9,6.1.0)"
+versionRange = "[6.0.9,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${mod_id}]]
 modId = "powergrid"
-type = "required"
+type = "optional"
 versionRange = "[0.5.4,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${mod_id}]]
-modId = "immersiveengineering"
-type = "optional"
-versionRange = "[1.0,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.${mod_id}]]
 modId = "tfmg"
-type = "required"
+type = "optional"
 versionRange = "[1.2.0,)"
 ordering = "NONE"
 side = "BOTH"

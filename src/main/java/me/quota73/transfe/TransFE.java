@@ -25,6 +25,7 @@ public class TransFE {
     }
 
     public TransFE(IEventBus modEventBus, ModContainer modContainer) {
+        TransFEBlocks.makeEntries();
         TransFEBlocks.BLOCKS.register(modEventBus);
         TransFEItems.ITEMS.register(modEventBus);
         TransFEBlockEntities.BLOCK_ENTITIES.register(modEventBus);
@@ -33,7 +34,7 @@ public class TransFE {
     }
 
     public void onRegisteringCapability(RegisterCapabilitiesEvent event) {
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.FE_TO_POWER_GRID_CONVERTER.get(), (be, c) -> be);
-        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
+        if (TransFEBlockEntities.POWERGRID_FE_CONVERTER.get() != null) event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.POWERGRID_FE_CONVERTER.get(), (be, c) -> be);
+        if (TransFEBlockEntities.TFMG_FE_CONVERTER.get() != null) event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, TransFEBlockEntities.TFMG_FE_CONVERTER.get(), (be, c) -> be);
     }
 }

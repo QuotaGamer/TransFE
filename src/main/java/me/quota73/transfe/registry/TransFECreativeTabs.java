@@ -15,9 +15,13 @@ public class TransFECreativeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CONVERTER_TAB = CREATIVE_MODE_TABS.register("converters", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.feConverters"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> TransFEItems.FE_TO_POWER_GRID_CONVERTER.get().getDefaultInstance())
+            .icon(() -> {
+                if (TransFEItems.POWERGRID_FE_CONVERTER != null) return TransFEItems.POWERGRID_FE_CONVERTER.get().getDefaultInstance();
+                if (TransFEItems.TFMG_FE_CONVERTER != null ) return TransFEItems.TFMG_FE_CONVERTER.get().getDefaultInstance();
+                return null;
+            })
             .displayItems((parameters, output) -> {
-                output.accept(TransFEItems.FE_TO_POWER_GRID_CONVERTER);
-                output.accept(TransFEItems.TFMG_FE_CONVERTER);
+                if (TransFEItems.POWERGRID_FE_CONVERTER != null) output.accept(TransFEItems.POWERGRID_FE_CONVERTER);
+                if (TransFEItems.TFMG_FE_CONVERTER != null) output.accept(TransFEItems.TFMG_FE_CONVERTER);
             }).build());
 }
